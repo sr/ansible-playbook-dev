@@ -1,0 +1,27 @@
+---
+- hosts: all
+  vars_files:
+    - vars/defaults.yml
+  roles:
+    - { role: mivok0.sudo, sudo_users: ['root', '%admin'],
+      sudo_nopassword: true }
+    - { role: resmo.fail2ban }
+    - { role: sfromm.rkhunter, rkhunter_mail: logwatch_mailto }
+    - common
+    - { role: tarsnap, tags: ['tarsnap'] }
+    - { role: vdirsyncer, tags: ['vdirsyncer'] }
+    - { role: cbk, tags: ['cbk'] }
+  tasks:
+    - name: Check current timezone
+      shell: cat /etc/timezone
+      register: current_timezone
+    - name: Set timezone
+      copy: content={{timezone}}
+            dest=/etc/timezone
+            owner=root
+            group=root
+            mode=0644
+            backup=yes
+      when: current_timezone.stdout != timezone
+      notify:
+        - update timezone

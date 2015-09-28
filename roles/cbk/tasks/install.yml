@@ -1,0 +1,11 @@
+---
+- apt_key: url=https://packagecloud.io/gpg.key state=present
+- apt: name=apt-transport-https update_cache=yes
+- apt_repository: repo="deb https://packagecloud.io/sr/utils/ubuntu/ trusty main" state=present
+- apt_repository: repo="deb-src https://packagecloud.io/sr/utils/ubuntu/ trusty main" state=present
+- apt: name=cbk update_cache=yes
+- template:
+    dest="/home/{{cbk_user}}/cbk.conf"
+    src=cbk.conf.j2
+    owner={{cbk_user}}
+    group={{cbk_group}}

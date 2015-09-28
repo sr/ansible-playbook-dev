@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+exec 1> >(logger -s -t cbk -p cron.info) 2>&1
+export HOME="/home/cbk"
+export PATH="/usr/local/bin:/bin:/usr/bin"
+export CBK_CONFIG="$HOME/cbk.conf"
+su cbk -l -p -c cbk-pull

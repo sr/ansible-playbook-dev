@@ -1,0 +1,9 @@
+---
+- name: Update APT package cache
+  action: apt update_cache=yes cache_valid_time=86400
+- name: Upgrade APT to the latest packages
+  action: apt upgrade=safe
+- name: Install unattended-upgrades
+  action: apt pkg=unattended-upgrades state=present
+- lineinfile: dest=/etc/apt/apt.conf.d/10periodic line='APT::Periodic::Update-Package-Lists "1";'
+- lineinfile: dest=/etc/apt/apt.conf.d/10periodic line='APT::Periodic::Unattended-Upgrade "1";'

@@ -1,0 +1,12 @@
+---
+- name: Create admin group
+  group: name=admin system=yes state=present
+- name: Create user account under admin group
+  user: name={{username}} createhome=yes group=admin
+    password=no shell=/bin/bash state=present
+- name: Setup authorized key for the user
+  authorized_key: user={{username}} key="{{ lookup('file', pubkey_path) }}"
+    state=present
+- name: Remove root SSH key setup by DigitalOcean
+  authorized_key: user=root key="{{ lookup('file', pubkey_path) }}"
+    state=absent

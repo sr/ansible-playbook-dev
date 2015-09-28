@@ -1,0 +1,20 @@
+---
+- apt: name=logwatch state=present
+- lineinfile: dest=/usr/share/logwatch/default.conf/logwatch.conf
+    regexp='^MailTo'
+    line='MailTo = {{ logwatch_mailto }}'
+    state=present
+    backrefs=yes
+    backup=yes
+- lineinfile: dest=/usr/share/logwatch/default.conf/logwatch.conf
+    regexp='^MailFrom'
+    line='MailFrom = {{ ansible_hostname }}'
+    state=present
+    backrefs=yes
+    backup=yes
+- lineinfile: dest=/usr/share/logwatch/default.conf/logwatch.conf
+    regexp='^Detail'
+    line='Detail = Low'
+    state=present
+    backrefs=yes
+    backup=yes

@@ -1,0 +1,17 @@
+---
+- name: Allow ssh through firewall
+  ufw: proto=tcp port=22 rule=allow
+- name: Set ufw policy to deny all incoming traffic
+  ufw: state=enabled direction=incoming policy=deny
+- name: Disable SSH password and root authentication
+  lineinfile: dest=/etc/ssh/sshd_config
+    line='PasswordAuthentication no'
+    state=present
+  notify:
+    - restart sshd
+- name: Disallow connecting as root via SSH
+  lineinfile: dest=/etc/ssh/sshd_config
+    line='PermitRootLogin no'
+    state=present
+  notify:
+    - restart sshd

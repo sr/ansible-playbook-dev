@@ -1,0 +1,28 @@
+---
+- group: name="{{cbk_group}}" system=yes state=present
+- user: name="{{cbk_user}}" createhome=yes group="{{cbk_group}}"
+    password=no shell=/bin/bash state=present
+- file: path={{item}} state=directory owner="{{cbk_user}}" \
+    group="{{cbk_group}}"
+  with_items:
+  - "/home/{{cbk_user}}/cache"
+  - "/home/{{cbk_user}}/data"
+- copy:
+    dest="/usr/local/etc/tarsnap.key"
+    src=tarsnap.key
+    owner="{{cbk_user}}"
+    group="{{cbk_group}}"
+    mode=0644
+- include: install.yml
+- copy:
+    dest="/etc/cron.daily/cbk"
+    src=cron.daily
+    owner=root
+    group=root
+    mode=755
+- copy:
+    dest="/etc/cron.weekly/cbk"
+    src=cron.weekly
+    owner=root
+    group=root
+    mode=755

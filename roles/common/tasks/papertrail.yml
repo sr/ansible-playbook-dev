@@ -1,0 +1,8 @@
+---
+- copy:
+    dest=/etc/rsyslog.d/90-papertrail.conf
+    content="*.*          @{{papertrail_host}}"
+    owner=root
+    group=root
+  notify:
+    - restart rsyslog
