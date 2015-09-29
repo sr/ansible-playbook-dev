@@ -1,13 +1,23 @@
 - apt_repository: repo='ppa:keithw/mosh'
+- apt_repository: repo='ppa:ansible/ansible'
 - apt: pkg={{ item }} state=present
   with_items:
+    - asciidoc
+    - ansible
+    - a2x
+    - cdbs
+    - debhelpers
+    - devscripts
     - dpkg-dev
     - git
     - htop
     - irssi
     - mailutils
     - mosh
+    - python-setuptools
+    - python-support
     - screen
+    - software-properties-common
     - devscripts
     - build-essential
     - lintian
