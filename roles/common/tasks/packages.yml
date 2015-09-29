@@ -23,3 +23,4 @@
     - lintian
 - name: Allow mosh protocol through firewall
   ufw: proto=udp port=60000:60020 rule=allow
+- gem: name=package_cloud
