@@ -1,7 +1,5 @@
 ---
-- hosts: all
-  vars_files:
-    - vars/defaults.yml
+- hosts: betsy
   roles:
     - { role: mivok0.sudo, sudo_users: ['root', '%admin'],
       sudo_nopassword: true }

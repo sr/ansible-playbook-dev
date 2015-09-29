@@ -1,5 +1,4 @@
 - apt_repository: repo='ppa:keithw/mosh'
-- apt_repository: repo='ppa:ansible/ansible'
 - apt: pkg={{ item }} state=present
   with_items:
     - asciidoc
