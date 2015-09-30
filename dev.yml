@@ -5,3 +5,4 @@
     - { role: sfromm.rkhunter, rkhunter_mail: logwatch_mailto }
     - common
     - deb-build
+    - { role: pachyderm, tags: ["pachyderm"] }
