@@ -3,9 +3,8 @@
   with_items:
     - asciidoc
     - ansible
-    - a2x
     - cdbs
-    - debhelpers
+    - debhelper
     - devscripts
     - dpkg-dev
     - git
