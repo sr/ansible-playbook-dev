@@ -6,5 +6,3 @@
 - apt_repository:
     repo="deb https://apt.dockerproject.org/repo/ ubuntu-vivid main"
 - apt: name=docker-engine
-- apt: name=golang-go
-- apt: name=golang-go.tools

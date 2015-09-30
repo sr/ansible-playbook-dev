@@ -6,3 +6,4 @@
     - common
     - deb-build
     - { role: pachyderm, tags: ["pachyderm"] }
+    - joshualund.golang
