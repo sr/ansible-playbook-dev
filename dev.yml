@@ -1,0 +1,7 @@
+---
+- hosts: dev
+  roles:
+    - { role: resmo.fail2ban }
+    - { role: sfromm.rkhunter, rkhunter_mail: logwatch_mailto }
+    - common
+    - deb-build
