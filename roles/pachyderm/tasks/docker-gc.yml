@@ -1,0 +1,8 @@
+# Install and setup https://github.com/spotify/docker-gc
+---
+- apt_key: url=https://packagecloud.io/gpg.key state=present
+- apt_repository: repo="deb https://packagecloud.io/sr/vendor/ubuntu/ vivid main" state=present
+- apt: name=docker-gc
+- copy:
+    dest=/etc/cron.hourly/docker-gc
+    src=docker-gc.cron.hourly

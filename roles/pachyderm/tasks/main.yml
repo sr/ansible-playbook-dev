@@ -10,3 +10,4 @@
     - cmake
     - docker-engine
     - pkg-config
+- include: docker-gc.yml
