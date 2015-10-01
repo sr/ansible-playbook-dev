@@ -6,3 +6,6 @@
 - copy:
     dest=/etc/cron.hourly/docker-gc
     src=docker-gc.cron.hourly
+    mode=755
+    user=root
+    group=root
