@@ -7,3 +7,4 @@
     - deb-build
     - { role: pachyderm, tags: ["pachyderm"] }
     - joshualund.golang
+    - franklinkim.docker-compose
