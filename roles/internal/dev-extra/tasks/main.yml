@@ -4,6 +4,7 @@
     - ansible-doc
     - gcc
     - git
+    - htop
     - jq
     - libgit2-dev
     - python-libcloud
