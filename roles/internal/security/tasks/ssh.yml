@@ -11,7 +11,9 @@
     - restart sshd
 - name: Disallow connecting as root via SSH
   lineinfile: dest=/etc/ssh/sshd_config
+    regexp='^PermitRootLogin'
     line='PermitRootLogin no'
     state=present
+    backrefs=yes
   notify:
     - restart sshd
