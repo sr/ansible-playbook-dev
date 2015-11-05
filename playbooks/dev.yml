@@ -1,0 +1,11 @@
+# Setup a personnal development machine.
+---
+- hosts: dev
+  roles:
+    - resmo.fail2ban
+    - joshualund.golang
+    - franklinkim.docker-compose
+    - docker
+    - { role: docker-gc, docker_gc_frequency: "weekly" }
+    - dev-extra
+    - deb-build

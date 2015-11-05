@@ -1,0 +1,14 @@
+---
+- apt: pkg={{ item }} state=present
+  with_items:
+    - ansible-doc
+    - gcc
+    - git
+    - jq
+    - libgit2-dev
+    - python-libcloud
+    - pkg-config
+    - screen
+    - shellcheck
+    - tree
+- user: name=dev groups=docker append=yes
