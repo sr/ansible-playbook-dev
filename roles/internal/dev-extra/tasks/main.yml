@@ -11,4 +11,16 @@
     - screen
     - shellcheck
     - tree
-- user: name=dev groups=docker append=yes
+- user:
+    state=present
+    name={{dev_extra_user}}
+    createhome=yes
+    group=sudo
+    password=no
+    shell=/bin/bash
+- authorized_key:
+    state=present
+    user={{dev_extra_user}}
+    key="{{ lookup('file', dev_extra_pubkey_path) }}"
+    state=present
+- user: name={{dev_extra_user}} groups=docker append=yes
