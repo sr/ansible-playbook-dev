@@ -4,4 +4,3 @@
 - src: mivok0.sudo
 - src: resmo.fail2ban
   version: 0.2.0
-- src: sfromm.rkhunter
