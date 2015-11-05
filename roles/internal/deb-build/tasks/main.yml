@@ -9,6 +9,7 @@
     - devscripts
     - dpkg-dev
     - lintian
+    - ruby
     - ruby-dev
     - software-properties-common
 - gem: name={{ item }} state=present
