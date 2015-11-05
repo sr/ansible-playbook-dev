@@ -4,6 +4,7 @@
   roles:
     - resmo.fail2ban
     - security
+    - mosh
     - joshualund.golang
     - franklinkim.docker-compose
     - { role: docker-gc, docker_gc_frequency: "weekly" }

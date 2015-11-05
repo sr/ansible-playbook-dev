@@ -1,0 +1,7 @@
+---
+- apt_repository: repo='ppa:keithw/mosh'
+- apt: pkg={{ item }} state=present
+  with_items:
+    - mosh
+- name: Allow mosh protocol through firewall
+  ufw: proto=udp port=60000:60020 rule=allow
