@@ -2,6 +2,7 @@
 # tasks file for rkhunter
 - include: setup-redhat.yml
   when: ansible_os_family == "RedHat"
-- apt: name=rkhunter state=present
-  when: ansible_os_family == "Debian"
+
+- name: template rkhunter.conf
+  template: src=rkhunter.conf.j2 dest=/etc/rkhunter.conf mode=0640
   notify: rkhunter update
