@@ -13,11 +13,12 @@
     - tree
     - vim
     - vim-nox
+- group: name=admin state=present
 - user:
     state=present
     name={{dev_extra_user}}
     createhome=yes
-    group=sudo
+    group=admin
     password=no
     shell=/bin/bash
 - authorized_key:
