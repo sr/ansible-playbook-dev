@@ -8,5 +8,7 @@
     - joshualund.golang
     - franklinkim.docker-compose
     - { role: docker-gc, docker_gc_frequency: "weekly" }
+    - { role: mivok0.sudo, sudo_users: ['root', '%sudo', '%admin'],
+      sudo_nopassword: true }
     - dev-extra
     - deb-build
