@@ -6,4 +6,10 @@
 - name: Install unattended-upgrades
   action: apt pkg=unattended-upgrades state=present
 - lineinfile: dest=/etc/apt/apt.conf.d/10periodic line='APT::Periodic::Update-Package-Lists "1";'
+  when: ansible_distribution_release == 'trusty'
 - lineinfile: dest=/etc/apt/apt.conf.d/10periodic line='APT::Periodic::Unattended-Upgrade "1";'
+  when: ansible_distribution_release == 'trusty'
+- copy:
+    dest=/etc/apt/apt.conf.d/02periodic
+    src=unattended-upgrades.conf
+  when: ansible_distribution_release == 'wily'
