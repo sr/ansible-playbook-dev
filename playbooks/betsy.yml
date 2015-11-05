@@ -6,6 +6,7 @@
     - { role: resmo.fail2ban }
     - { role: sfromm.rkhunter, rkhunter_mail: logwatch_mailto }
     - common
+    - security
     - { role: tarsnap, tags: ['tarsnap'] }
     - { role: vdirsyncer, tags: ['vdirsyncer'] }
     - { role: cbk, tags: ['cbk'] }
