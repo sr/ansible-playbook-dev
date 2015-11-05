@@ -1,5 +1,4 @@
 ---
-- apt_repository: repo='ppa:keithw/mosh'
 - apt: pkg={{ item }} state=present
   with_items:
     - mosh
