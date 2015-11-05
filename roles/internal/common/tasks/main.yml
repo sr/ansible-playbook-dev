@@ -4,6 +4,5 @@
 - include: security.yml tags=security
 - include: ntp.yml tags=ntp
 - include: logwatch.yml tags=logwatch
-- include: rkhunter.yml tags=rkhunter
 - include: packages.yml tags=packages
 - include: papertrail.yml tags=papertrail
