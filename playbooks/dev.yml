@@ -3,6 +3,7 @@
 - hosts: dev
   roles:
     - resmo.fail2ban
+    - security
     - joshualund.golang
     - franklinkim.docker-compose
     - docker
