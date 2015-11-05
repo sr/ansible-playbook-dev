@@ -6,7 +6,6 @@
     - security
     - joshualund.golang
     - franklinkim.docker-compose
-    - docker
     - { role: docker-gc, docker_gc_frequency: "weekly" }
     - dev-extra
     - deb-build
