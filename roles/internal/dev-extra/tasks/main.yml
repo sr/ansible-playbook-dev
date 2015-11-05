@@ -11,6 +11,8 @@
     - screen
     - shellcheck
     - tree
+    - vim
+    - vim-nox
 - user:
     state=present
     name={{dev_extra_user}}
