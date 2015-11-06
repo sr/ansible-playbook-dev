@@ -26,4 +26,9 @@
     user={{dev_extra_user}}
     key="{{ lookup('file', dev_extra_pubkey_path) }}"
     state=present
+- copy:
+    dest=/etc/sudoers.d/10-admin-passwordless
+    src=sudoers
+    owner=root
+    group=root
 - user: name={{dev_extra_user}} groups=docker append=yes
