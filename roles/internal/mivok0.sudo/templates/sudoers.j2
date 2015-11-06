@@ -2,3 +2,4 @@
 {% for i in sudo_users %}
 {{i}} ALL=(ALL) {{"NOPASSWD: " if sudo_nopasswd else ""}}ALL
 {% endfor %}
+#includedir /etc/sudoers.d
