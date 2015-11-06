@@ -1,6 +1,7 @@
 ---
 - apt: pkg={{ item }} state=present
   with_items:
+    - ansible
     - gcc
     - git
     - htop
