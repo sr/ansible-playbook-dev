@@ -4,10 +4,11 @@
   roles:
     - resmo.fail2ban
     - security
+    - tarsnap
     - timezone
     - mosh
     - joshualund.golang
     - franklinkim.docker-compose
     - { role: docker-gc, docker_gc_frequency: "weekly" }
-    - dev-extra
+    - { role: dev-extra, tags: ['dev-extra'] }
     - deb-build
