@@ -11,6 +11,7 @@
     - pkg-config
     - screen
     - shellcheck
+    - tig
     - tree
     - vim
     - vim-nox
