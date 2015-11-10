@@ -11,3 +11,4 @@ galaxy_info:
   - development
 dependencies:
   - docker
+  - tarsnap

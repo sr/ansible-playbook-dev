@@ -4,7 +4,6 @@
   roles:
     - resmo.fail2ban
     - security
-    - tarsnap
     - timezone
     - mosh
     - joshualund.golang
