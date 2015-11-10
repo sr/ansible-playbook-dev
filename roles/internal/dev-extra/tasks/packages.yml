@@ -1,0 +1,18 @@
+---
+- apt: pkg={{ item }} state=present
+  with_items:
+    - ansible
+    - curl
+    - gcc
+    - git
+    - htop
+    - jq
+    - libgit2-dev
+    - python-libcloud
+    - pkg-config
+    - screen
+    - shellcheck
+    - tig
+    - tree
+    - vim
+    - vim-nox

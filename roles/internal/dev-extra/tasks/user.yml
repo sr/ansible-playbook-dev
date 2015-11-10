@@ -1,0 +1,19 @@
+---
+- group: name=admin state=present
+- user:
+    state=present
+    name={{dev_extra_user}}
+    createhome=yes
+    group=admin
+    password=no
+    shell=/bin/bash
+- authorized_key:
+    state=present
+    user={{dev_extra_user}}
+    key="{{ lookup('file', dev_extra_pubkey_path) }}"
+- copy:
+    dest=/etc/sudoers.d/10-admin-passwordless
+    src=sudoers
+    owner=root
+    group=root
+- user: name={{dev_extra_user}} groups=docker append=yes
