@@ -5,6 +5,7 @@
       sudo_nopassword: true }
     - { role: resmo.fail2ban }
     - { role: sfromm.rkhunter, rkhunter_mail: logwatch_mailto }
+    - { role: papertrail, tags: ['papertrail'] }
     - common
     - timezone
     - security

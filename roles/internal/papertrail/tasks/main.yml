@@ -1,4 +1,5 @@
 ---
+- apt: name=rsyslog
 - copy:
     dest=/etc/rsyslog.d/90-papertrail.conf
     content="*.*          @{{papertrail_host}}"
