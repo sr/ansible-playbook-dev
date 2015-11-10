@@ -1,5 +1,4 @@
 ---
 - include: users.yml tags=users
-- include: ntp.yml tags=ntp
 - include: logwatch.yml tags=logwatch
 - include: packages.yml tags=packages

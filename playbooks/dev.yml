@@ -6,6 +6,7 @@
     - { role: papertrail, tags: ['papertrail'] }
     - timezone
     - mosh
+    - { role: ntp, tags: ['ntp'] }
     - joshualund.golang
     - franklinkim.docker-compose
     - { role: docker-gc, docker_gc_frequency: "weekly" }
