@@ -2,7 +2,6 @@
 ---
 - hosts: dev
   roles:
-    - resmo.fail2ban
     - security
     - timezone
     - mosh
