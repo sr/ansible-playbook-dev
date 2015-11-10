@@ -2,7 +2,7 @@
 ---
 - hosts: dev
   roles:
-    - security
+    - { role: security, tags: ['security'] }
     - timezone
     - mosh
     - joshualund.golang
