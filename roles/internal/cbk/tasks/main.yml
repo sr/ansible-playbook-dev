@@ -9,7 +9,7 @@
   - "/home/{{cbk_user}}/data"
 - copy:
     dest="/usr/local/etc/tarsnap.key"
-    src=tarsnap.key
+    src="{{cbk_tarsnap_key}}"
     owner="{{cbk_user}}"
     group="{{cbk_group}}"
     mode=0644
