@@ -8,6 +8,7 @@
     - htop
     - jq
     - libgit2-dev
+    - libtool
     - python-libcloud
     - pkg-config
     - screen
