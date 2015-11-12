@@ -9,6 +9,8 @@
     - { role: ntp, tags: ['ntp'] }
     - joshualund.golang
     - franklinkim.docker-compose
+    - { role: cbk, tags: ['cbk'] }
+    - { role: acts, tags: ['acts'] }
     - { role: docker-gc, docker_gc_frequency: "weekly" }
     - { role: dev-extra, tags: ['dev-extra'] }
     - { role: dev-operator, tags: ['dev-operator'] }

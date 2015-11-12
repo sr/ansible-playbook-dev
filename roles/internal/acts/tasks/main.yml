@@ -1,0 +1,16 @@
+---
+- apt_key: url=https://packagecloud.io/gpg.key state=present
+- apt_repository: repo="deb https://packagecloud.io/sr/vendor/ubuntu/ wily main" state=present
+- apt: name=acts=1.2 state=present
+- template:
+    dest=/usr/local/etc/acts.conf
+    src=acts.conf.j2
+    owner=root
+    group=root
+    mode=644
+- copy:
+    dest="/etc/cron.{{acts_cron_frequency}}/acts"
+    content="#!/bin/sh\nacts\n"
+    owner=root
+    group=root
+    mode=755

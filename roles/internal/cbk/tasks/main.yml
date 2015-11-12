@@ -1,28 +1,29 @@
 ---
+- apt_key: url=https://packagecloud.io/gpg.key state=present
+- apt: name=apt-transport-https state=present
+- apt_repository: repo="deb https://packagecloud.io/sr/utils/ubuntu/ trusty main" state=present
+- apt_repository: repo="deb-src https://packagecloud.io/sr/utils/ubuntu/ trusty main" state=present
+- apt_repository: repo="ppa:nilarimogard/webupd8"
+- apt: name=cbk={{cbk_version}} update_cache=yes
+
 - group: name="{{cbk_group}}" system=yes state=present
-- user: name="{{cbk_user}}" createhome=yes group="{{cbk_group}}"
-    password=no shell=/bin/bash state=present
-- file: path={{item}} state=directory owner="{{cbk_user}}" \
+- user:
+    name="{{cbk_user}}"
     group="{{cbk_group}}"
-  with_items:
-  - "/home/{{cbk_user}}/cache"
-  - "/home/{{cbk_user}}/data"
-- copy:
-    dest="/usr/local/etc/tarsnap.key"
-    src="{{cbk_tarsnap_key}}"
-    owner="{{cbk_user}}"
-    group="{{cbk_group}}"
-    mode=0644
-- include: install.yml
+    createhome=yes
+    password=no
+    shell=/bin/bash
+    state=present
+
+- template:
+    dest="/usr/local/etc/cbk.conf"
+    src=cbk.conf.j2
+    owner=root
+    group=root
+
 - copy:
     dest="/etc/cron.daily/cbk"
     src=cron.daily
-    owner=root
-    group=root
-    mode=755
-- copy:
-    dest="/etc/cron.weekly/cbk"
-    src=cron.weekly
     owner=root
     group=root
     mode=755
