@@ -1,4 +1,3 @@
 ---
 - include: backup.yml
 - include: packages.yml
-- include: user.yml
