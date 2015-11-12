@@ -11,4 +11,5 @@
     - franklinkim.docker-compose
     - { role: docker-gc, docker_gc_frequency: "weekly" }
     - { role: dev-extra, tags: ['dev-extra'] }
+    - { role: dev-operator, tags: ['dev-operator'] }
     - deb-build
