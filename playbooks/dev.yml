@@ -6,6 +6,7 @@
     - { role: papertrail, tags: ['papertrail'] }
     - timezone
     - mosh
+    - { role: irssi, tags: ['irssi'] }
     - { role: ntp, tags: ['ntp'] }
     - joshualund.golang
     - franklinkim.docker-compose

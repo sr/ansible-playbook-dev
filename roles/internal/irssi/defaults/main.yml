@@ -1,0 +1,4 @@
+irssi_logs_dir: "~/logs"
+irssi_logs_owner: "{{ansible_user}}"
+irssi_logs_group: "{{ansible_user}}"
+irssi_logs_mode: 775
