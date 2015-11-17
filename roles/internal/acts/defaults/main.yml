@@ -1,2 +1,3 @@
 acts_directories: "home"
 acts_cron_frequency: "daily"
+acts_verbosity: 0
