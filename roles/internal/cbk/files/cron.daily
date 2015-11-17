@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-set -e
-exec 1> >(logger -s -t cbk -p cron.info) 2>&1
-export PATH="/opt/vdirsyncer/bin:/usr/local/bin:/bin:/usr/bin"
-export HOME="/home/cbk"
-su cbk -l -p -c 'cbk-pull -a'

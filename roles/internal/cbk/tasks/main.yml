@@ -21,9 +21,9 @@
     owner=root
     group=root
 
-- copy:
+- template:
     dest="/etc/cron.daily/cbk"
-    src=cron.daily
+    src=cron.daily.j2
     owner=root
     group=root
     mode=755
