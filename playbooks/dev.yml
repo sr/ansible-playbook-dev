@@ -1,6 +1,6 @@
 # Setup a personnal development machine.
 ---
-- hosts: gcloud
+- hosts: dev
   roles:
     - { role: security, tags: ['security'] }
     - { role: papertrail, tags: ['papertrail'] }
