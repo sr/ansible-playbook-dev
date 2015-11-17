@@ -3,7 +3,7 @@
 - apt: name=apt-transport-https state=present
 - apt_repository: repo="deb https://packagecloud.io/sr/utils/ubuntu/ trusty main" state=present
 - apt_repository: repo="deb-src https://packagecloud.io/sr/utils/ubuntu/ trusty main" state=present
-- apt_repository: repo="ppa:nilarimogard/webupd8"
+- apt_repository: repo="ppa:nilarimogard/webupd8" state=present
 - apt: name=cbk={{cbk_version}} update_cache=yes
 
 - group: name="{{cbk_group}}" system=yes state=present
