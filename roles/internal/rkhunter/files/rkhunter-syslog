@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+exec 1> >(logger -s -t rkhunter -p cron.info) 2>&1
+
+RKHUNTER=/usr/bin/rkhunter
+
+test -x $RKHUNTER || exit 0
+
+# source our config
+. /etc/default/rkhunter
+
+if [ -z "$NICE" ]; then
+    NICE=0
+fi
+
+/usr/bin/nice -n $NICE $RKHUNTER --cronjob --report-warnings-only --appendlog

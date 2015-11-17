@@ -11,3 +11,4 @@ galaxy_info:
   - development
 dependencies:
   - resmo.fail2ban
+  - rkhunter

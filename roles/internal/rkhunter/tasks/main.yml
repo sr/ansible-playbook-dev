@@ -1,0 +1,9 @@
+---
+# Setup rkhunter piping output to syslog
+- apt: name=rkhunter state=present
+- copy:
+    src=rkhunter-syslog
+    dest=/etc/cron.daily/rkhunter-syslog
+    mode=755
+    owner=root
+    group=root
