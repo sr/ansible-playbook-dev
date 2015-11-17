@@ -9,5 +9,4 @@ galaxy_info:
     - wily
   categories: []
 dependencies:
-  - tarsnap
   - vdirsyncer
