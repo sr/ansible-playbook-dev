@@ -8,7 +8,7 @@ UsePrivilegeSeparation yes
 KeyRegenerationInterval 3600
 ServerKeyBits 1024
 SyslogFacility AUTH
-LogLevel INFO
+LogLevel ERROR
 LoginGraceTime 120
 PermitRootLogin no
 StrictModes yes
