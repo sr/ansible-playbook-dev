@@ -10,6 +10,7 @@
     - libgit2-dev
     - python-libcloud
     - pkg-config
+    - ruby-github-markdown
     - screen
     - shellcheck
     - tig
