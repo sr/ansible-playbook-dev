@@ -1,0 +1,31 @@
+ansible_user: sr
+ansible_become: True
+ansible_become_user: root
+
+irssi_logs_dir: "/home/sr/logs"
+
+papertrail_host: "{{vault_papertrail_host}}"
+
+cbk_fastmail_username: srozet@fastmail.fm
+cbk_fastmail_password: "{{vault_cbk_fastmail_password}}"
+cbk_github_user: sr
+cbk_github_token: "{{vault_cbk_github_token}}"
+cbk_github_excludes: "sr/roko sr/rack-test sr/jekyll-pages benburkert vangberg/devspool"
+cbk_irclogs_source: "{{irssi_logs_dir}}"
+cbk_pinboard_token: "{{vault_cbk_pinboard_token}}"
+cbk_soundcloud_likes_user: "srozet"
+
+vdirsyncer_dir: /opt/vdirsyncer
+
+docker_authorized_users:
+  - sr
+
+acts_verbosity: 1
+acts_directories: >
+  home/sr
+  home/cbk/data/fastmail-carddav
+  home/cbk/data/fastmail-imap
+  home/cbk/data/github
+  home/cbk/data/irclogs
+  home/cbk/data/pinboard
+  home/cbk/data/soundcloud-likes

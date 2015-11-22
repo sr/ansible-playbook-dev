@@ -1,0 +1,12 @@
+---
+username: sr
+timezone: Etc/UTC
+ntp_servers:
+  - 0.pool.ntp.org
+  - 1.pool.ntp.org
+  - 2.pool.ntp.org
+  - 3.pool.ntp.org
+tarsnap_version: 1.0.36.1
+fail2ban_config_bantime: 3600
+fail2ban_config_maxretry: 2
+fail2ban_config_destemail: me+betsy@simonrozet.com
