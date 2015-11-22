@@ -7,3 +7,5 @@
     repo="deb https://apt.dockerproject.org/repo/ ubuntu-vivid main"
 - apt: name=docker-engine
 - service: name=docker state=started
+- user: name={{item}} groups=docker append=yes
+  with_items: "{{docker_authorized_users}}"
