@@ -7,3 +7,9 @@
     mode=755
     owner=root
     group=root
+- copy:
+    src=rkhunter.conf
+    dest=/etc/default/rkhunter
+    mode=755
+    owner=root
+    group=root
