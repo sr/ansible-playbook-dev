@@ -1,5 +1,5 @@
 deps:
-	@ ansible-galaxy install -r roles/requirements.yml -p roles/vendor
+	@ ansible-galaxy install --ignore-errors -r roles/requirements.yml -p roles/vendor
 
 betsy:
 	@ ansible-playbook playbooks/betsy.yml --diff
