@@ -1,8 +1,8 @@
 ---
 - apt_key: url=https://packagecloud.io/gpg.key state=present
 - apt: name=apt-transport-https state=present
-- apt_repository: repo="deb https://packagecloud.io/sr/utils/ubuntu/ trusty main" state=present
-- apt_repository: repo="deb-src https://packagecloud.io/sr/utils/ubuntu/ trusty main" state=present
+- apt_repository: repo="deb https://packagecloud.io/sr/cbk/ubuntu/ wily main" state=present
+- apt_repository: repo="deb-src https://packagecloud.io/sr/cbk/ubuntu/ wily main" state=present
 - apt_repository: repo="ppa:nilarimogard/webupd8" state=present
 - apt: name=cbk={{cbk_version}} update_cache=yes
 
@@ -16,7 +16,7 @@
     state=present
 
 - template:
-    dest="/usr/local/etc/cbk.conf"
+    dest="/etc/cbk.conf"
     src=cbk.conf.j2
     owner=root
     group=root
