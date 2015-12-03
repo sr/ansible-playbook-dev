@@ -4,15 +4,15 @@
   roles:
     - { role: security, tags: ['security'] }
     - { role: papertrail, tags: ['papertrail'] }
-    - timezone
-    - mosh
+    - { role: timezone, tags: ['timezone'] }
+    - { role: mosh, tags: ['mosh'] }
     - { role: irssi, tags: ['irssi'] }
     - { role: ntp, tags: ['ntp'] }
-    - joshualund.golang
-    - franklinkim.docker-compose
+    - { role: joshualund.golang, tags: ['golang'] }
+    - { role: franklinkim.docker-compose, tags: ['docker-compose'] }
     - { role: cbk, tags: ['cbk'] }
     - { role: acts, tags: ['acts'] }
     - { role: docker-gc, docker_gc_frequency: "weekly" }
     - { role: dev-extra, tags: ['dev-extra'] }
     - { role: dev-operator, tags: ['dev-operator'] }
-    - deb-build
+    - { role: deb-build, tags: ['deb-build'] }
