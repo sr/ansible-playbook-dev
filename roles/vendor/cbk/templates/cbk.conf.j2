@@ -1,9 +1,33 @@
 export CBK_DATA_DIR="{{cbk_data_dir}}"
+
+{% if cbk_fastmail_username is defined %}
 export CBK_FASTMAIL_USERNAME="{{cbk_fastmail_username}}"
+{% endif %}
+
+{% if cbk_fastmail_password is defined %}
 export CBK_FASTMAIL_PASSWORD="{{cbk_fastmail_password}}"
+{% endif %}
+
+{% if cbk_github_user is defined %}
 export CBK_GITHUB_USER="{{cbk_github_user}}"
+{% endif %}
+
+{% if cbk_github_token is defined %}
 export CBK_GITHUB_TOKEN="{{cbk_github_token}}"
+{% endif %}
+
+{% if cbk_github_excludes is defined %}
 export CBK_GITHUB_EXCLUDES="{{cbk_github_excludes}}"
+{% endif %}
+
+{% if cbk_irclogs_source is defined %}
 export CBK_IRCLOGS_SOURCE="{{cbk_irclogs_source}}"
+{% endif %}
+
+{% if cbk_pinboard_token is defined %}
 export CBK_PINBOARD_TOKEN="{{cbk_pinboard_token}}"
+{% endif %}
+
+{% if cbk_soundcloud_likes_user is defined %}
 export CBK_SOUNDCLOUD_LIKES_USER="{{cbk_soundcloud_likes_user}}"
+{% endif %}
