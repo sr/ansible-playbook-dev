@@ -1,0 +1,30 @@
+#!/bin/sh
+#/ Usage: ansible-dev args...
+#/        ansible-dev setup
+set -eu
+
+cd "$(dirname "$0")/.."
+
+# Configure ansible for running this playbook.
+: "${ANSIBLE_CONFIG:="$(pwd)/ansible.cfg"}"
+: "${ANSIBLE_TRANSPORT:="ssh"}"
+: "${ANSIBLE_PIPELINING:="true"}"
+: "${ANSIBLE_HOSTS:="$HOME/etc/ansible/inventory.ini"}"
+: "${ANSIBLE_ROLES_PATH:="$(pwd)/roles/internal:$(pwd)/roles/vendor"}"
+: "${ANSIBLE_VAULT_PASSWORD_FILE:="$HOME/etc/ansible/vault-password"}"
+: "${ANSIBLE_PLAYBOOK:="$(pwd)/playbooks/dev.yml"}"
+
+export ANSIBLE_TRANSPORT \
+    ANSIBLE_PIPELINING \
+    ANSIBLE_HOSTS \
+    ANSIBLE_ROLES_PATH \
+    ANSIBLE_VAULT_PASSWORD_FILE
+
+if [ "$1" = "setup" ]
+then
+    ansible-galaxy install --ignore-errors \
+        -r roles/requirements.yml -p roles/vendor
+else
+    ansible-playbook -i "$ANSIBLE_HOSTS" -c local --diff \
+        "$ANSIBLE_PLAYBOOK" "$@"
+fi
