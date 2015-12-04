@@ -15,4 +15,4 @@ install:
   - pip install ansible
 script:
   - "bin/ansible-dev --syntax-check"
-  - "bin/ansible-dev --connection=local --sudo"
+  - "bin/ansible-dev --connection=local -e ansible_user=root --sudo"
