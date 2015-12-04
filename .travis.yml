@@ -5,7 +5,7 @@ language: python
 python: "2.7"
 env:
 - ANSIBLE_PLAYBOOK=playbooks/dev.yml
-  ANSIBLE_INVENTORY=tests/inventory
+  ANSIBLE_HOSTS=tests/inventory
   ANSIBLE_VAULT_PASSWORD_FILE=tests/vault-password
 before_install:
   - sudo apt-get update -qq
