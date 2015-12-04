@@ -1,0 +1,2 @@
+This is the Ansible playbook I use to setup and maintain my development machine.
+It is currently running on GCE with the official Ubuntu 15.10 image.
