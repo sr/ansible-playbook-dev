@@ -33,7 +33,7 @@ else
 
     # Copy in the encrypted vault file if it exists.
     test -f "$ANSIBLE_VAULT_FILE" && {
-        trap 'rm -f $ANSIBLE_VAULT_FILE' EXIT
+        trap 'rm -f group_vars/dev/vault.yml' EXIT
         cp "$ANSIBLE_VAULT_FILE" group_vars/dev/vault.yml
     }
 
