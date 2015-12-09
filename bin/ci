@@ -1,2 +1,5 @@
 #!/bin/sh
-/home/sr/bin/buildkite-docker
+set -eu
+cd "$(dirname "$0")/.."
+bin/ansible-dev --syntax-check
+bin/ansible-dev --connection=local -e ansible_user=root --sudo --skip-tags dev-extra
