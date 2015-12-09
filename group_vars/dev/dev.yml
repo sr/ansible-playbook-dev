@@ -22,6 +22,7 @@ vdirsyncer_dir: /opt/vdirsyncer
 
 docker_authorized_users:
   - sr
+  - buildkite-agent
 
 acts_verbosity: 1
 acts_directories: >
