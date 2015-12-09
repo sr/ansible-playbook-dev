@@ -1,2 +1,2 @@
 #!/bin/sh
-/home/sr/buildkite-docker
+/home/sr/bin/buildkite-docker
