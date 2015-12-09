@@ -2,4 +2,6 @@
 set -eu
 cd "$(dirname "$0")/.."
 bin/ansible-dev --syntax-check
-bin/ansible-dev --connection=local -e ansible_user=root
+bin/ansible-dev --connection=local \
+    -e ansible_user=root \
+    --skip-tags=buildkite-agent
