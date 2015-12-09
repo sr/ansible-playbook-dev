@@ -16,6 +16,8 @@ cbk_irclogs_source: "{{irssi_logs_dir}}"
 cbk_pinboard_token: "{{vault_cbk_pinboard_token}}"
 cbk_soundcloud_likes_user: "srozet"
 
+buildkite_agent_token: "{{vault_buildkite_agent_token}}"
+
 vdirsyncer_dir: /opt/vdirsyncer
 
 docker_authorized_users:
