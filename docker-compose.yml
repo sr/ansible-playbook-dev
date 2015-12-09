@@ -1,5 +1,6 @@
 app:
   build: .
+  privileged: true
   volumes:
     - ./:/app
   environment:
