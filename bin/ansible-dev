@@ -20,10 +20,16 @@ export ANSIBLE_TRANSPORT \
     ANSIBLE_ROLES_PATH \
     ANSIBLE_VAULT_PASSWORD_FILE
 
-if [ "${1:-}" = "setup" ]
+cmd="${1:-}"
+if [ "$cmd" = "setup" ]
 then
     ansible-galaxy install --ignore-errors \
         -r roles/requirements.yml -p roles/vendor
+elif [ "$cmd" = "edit-vault" ]
+then
+    ansible-vault edit \
+        --vault-password-file "$ANSIBLE_VAULT_PASSWORD_FILE" \
+        "$ANSIBLE_VAULT_FILE"
 else
     # The group_vars need to be in the same directory as the inventory
     # otherwise they aren't loaded. So we copy it inside the playbook
