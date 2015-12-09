@@ -1,8 +1,9 @@
 app:
-  build: .
+  build: ..
+  dockerfile: tests/Dockerfile
   privileged: true
   volumes:
-    - ./:/app
+    - ../:/app
   environment:
     ANSIBLE_PLAYBOOK: playbooks/dev.yml
     ANSIBLE_HOSTS: tests/inventory
