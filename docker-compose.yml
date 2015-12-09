@@ -1,8 +1,7 @@
 app:
-  build: ..
-  dockerfile: ./tests/Dockerfile
+  build: .
   volumes:
-    - ../:/app
+    - ./:/app
   environment:
     ANSIBLE_PLAYBOOK: playbooks/dev.yml
     ANSIBLE_HOSTS: tests/inventory
