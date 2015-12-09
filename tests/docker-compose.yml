@@ -1,0 +1,10 @@
+app:
+  build: ..
+  dockerfile: ./tests/Dockerfile
+  volumes:
+    - ../:/app
+  environment:
+    ANSIBLE_PLAYBOOK: playbooks/dev.yml
+    ANSIBLE_HOSTS: tests/inventory
+    ANSIBLE_VAULT_FILE: tests/vault.yml
+    ANSIBLE_VAULT_PASSWORD_FILE: tests/vault-password
