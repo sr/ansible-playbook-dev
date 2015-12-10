@@ -4,3 +4,4 @@ RUN apt-get update \
       && apt-add-repository ppa:ansible/ansible \
       && apt-get update \
       && apt-get install -y sudo openssh-server ssh aptitude ufw ansible
+WORKDIR /app
