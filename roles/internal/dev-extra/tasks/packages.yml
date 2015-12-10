@@ -6,6 +6,7 @@
     - curl
     - gcc
     - git
+    - gist
     - htop
     - jq
     - libgit2-dev
