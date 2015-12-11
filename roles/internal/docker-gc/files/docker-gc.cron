@@ -1,2 +1,4 @@
-#!/bin/sh
-exec /usr/sbin/docker-gc
+#!/usr/bin/env bash
+set -eu
+exec 1> >(logger -s -t docker-gc -p cron.info) 2>&1
+/usr/sbin/docker-gc
