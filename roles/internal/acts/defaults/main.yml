@@ -1,3 +1,4 @@
+acts_version: "1.2-20151216"
 acts_directories: "home"
 acts_cron_frequency: "daily"
 acts_verbosity: 0
