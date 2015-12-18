@@ -10,6 +10,7 @@
     - htop
     - jq
     - libgit2-dev
+    - pandoc
     - python-libcloud
     - pkg-config
     - ruby-github-markdown
