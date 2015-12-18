@@ -7,7 +7,7 @@
     keyserver="hkp://keyserver.ubuntu.com:80"
     id="32A37959C2FA5C3C99EFBC32A79206696452D198"
     state=present
-- apt: name=buildkite-agent update_cache=true
+- apt: name=buildkite-agent={{buildkite_agent_version}} update_cache=true
 - service: name=buildkite-agent state=started
 - apt: name=python-httplib2 state=present
 - lineinfile:

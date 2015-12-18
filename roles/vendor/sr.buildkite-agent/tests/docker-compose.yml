@@ -1,0 +1,9 @@
+app:
+  build: ..
+  dockerfile: tests/Dockerfile
+  privileged: true
+  volumes:
+    - ../:/app
+  environment:
+    ANSIBLE_HOSTS: tests/inventory
+    ANSIBLE_ROLES_PATH: /

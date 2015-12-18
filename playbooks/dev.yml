@@ -16,4 +16,4 @@
     - { role: dev-extra, tags: ['dev-extra'] }
     - { role: dev-operator, tags: ['dev-operator'] }
     - { role: deb-build, tags: ['deb-build'] }
-    - { role: buildkite-agent, tags: ['buildkite-agent'] }
+    - { role: sr.buildkite-agent, tags: ['buildkite-agent'] }

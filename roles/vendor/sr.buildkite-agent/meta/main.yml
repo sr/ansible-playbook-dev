@@ -7,7 +7,7 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - vivid
+    - wily
   categories:
-  - cloud:gce
   - development
 dependencies: []
