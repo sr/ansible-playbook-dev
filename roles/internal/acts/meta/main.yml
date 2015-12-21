@@ -8,5 +8,4 @@ galaxy_info:
     versions:
     - wily
   categories: []
-dependencies:
-  - tarsnap
+dependencies: []

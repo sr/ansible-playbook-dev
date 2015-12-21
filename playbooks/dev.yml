@@ -11,6 +11,7 @@
     - { role: joshualund.golang, tags: ['golang'] }
     - { role: franklinkim.docker-compose, tags: ['docker-compose'] }
     - { role: cbk, tags: ['cbk'] }
+    - { role: tarsnap, tags: ['tarsnap'] }
     - { role: acts, tags: ['acts'] }
     - { role: docker-gc, docker_gc_frequency: "weekly" }
     - { role: dev-extra, tags: ['dev-extra'] }
