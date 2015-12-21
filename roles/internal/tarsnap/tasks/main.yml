@@ -2,7 +2,7 @@
 - apt_key: url=https://packagecloud.io/gpg.key state=present
 - apt: name=apt-transport-https state=present
 - apt_repository: repo="deb https://packagecloud.io/sr/packages/ubuntu/ wily main" state=present
-- apt: name=tarsnap={{tarsnap_version}} update_cache=true
+- apt: name=tarsnap=1.0.36.1-20151219 state=present
 - file: path=/var/cache/tarsnap state=directory owner=root group=root
 - copy:
     dest=/usr/local/etc/tarsnap.conf
