@@ -15,6 +15,5 @@
     - { role: acts, tags: ['acts'] }
     - { role: docker-gc, docker_gc_frequency: "weekly" }
     - { role: dev-extra, tags: ['dev-extra'] }
-    - { role: dev-operator, tags: ['dev-operator'] }
     - { role: deb-build, tags: ['deb-build'] }
     - { role: sr.buildkite-agent, tags: ['buildkite-agent'] }
