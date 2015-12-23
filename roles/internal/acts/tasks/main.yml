@@ -1,6 +1,6 @@
 ---
 - apt_key: url=https://packagecloud.io/gpg.key state=present
-- apt_repository: repo="deb https://packagecloud.io/sr/vendor/ubuntu/ wily main" state=present
+- apt_repository: repo="deb https://packagecloud.io/sr/packages/ubuntu/ wily main" state=present
 - apt: name=acts={{acts_version}} state=present
 - template:
     dest=/usr/local/etc/acts.conf
