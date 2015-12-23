@@ -10,6 +10,7 @@
     - htop
     - jq
     - libgit2-dev
+    - mercurial
     - pandoc
     - python-libcloud
     - pkg-config
