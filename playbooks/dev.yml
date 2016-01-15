@@ -2,6 +2,7 @@
 ---
 - hosts: dev
   roles:
+    - { role: ansible, tags: ['ansible'] }
     - { role: security, tags: ['security'] }
     - { role: papertrail, tags: ['papertrail'] }
     - { role: timezone, tags: ['timezone'] }
