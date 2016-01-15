@@ -7,9 +7,9 @@ irssi_logs_dir: "/home/sr/logs"
 
 papertrail_host: "{{vault_papertrail_host}}"
 
-go_tarball: "go1.6beta1.linux-amd64.tar.gz"
-go_tarball_checksum: "8fbf814b5af884c9bdbbfc22c4683732c06473e07879bb890cb1c7306382d1a0"
-go_version_target: "go version go1.6beta1 linux/amd64"
+go_tarball: "go1.6beta2.linux-amd64.tar.gz"
+go_tarball_checksum: "7ddf9797c7baaac2c16eed1a8d42f9a446223301c7dc8771ea805f211828e6a5"
+go_version_target: "go version go1.6beta2 linux/amd64"
 
 cbk_fastmail_username: srozet@fastmail.fm
 cbk_fastmail_password: "{{vault_cbk_fastmail_password}}"
