@@ -1,9 +1,9 @@
 ---
 - apt_key: url=https://packagecloud.io/gpg.key state=present
 - apt_repository: repo="deb https://packagecloud.io/sr/packages/ubuntu/ wily main" state=present
-- apt: name=acts={{acts_version}} state=present
+- apt: name=acts={{acts_version}} state=present update_cache=yes cache_valid_time=3600
 - template:
-    dest=/usr/local/etc/acts.conf
+    dest=/etc/acts.conf
     src=acts.conf.j2
     owner=root
     group=root
