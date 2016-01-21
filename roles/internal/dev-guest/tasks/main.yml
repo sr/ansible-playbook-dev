@@ -1,0 +1,10 @@
+- user: name=guest createhome=yes
+- authorized_key: user=guest key=https://github.com/{{item}}.keys
+  with_items:
+    - jfryman
+    - lstoll
+- copy: src=/home/sr/.bashrc dest=/home/guest/.bashrc
+- copy: src=/home/sr/.screenrc dest=/home/guest/.screenrc
+- copy: src=/home/sr/.vimrc dest=/home/guest/.vimrc
+- copy: src=/home/sr/.vim dest=/home/guest/
+- copy: src=/home/sr/.kube dest=/home/guest/
