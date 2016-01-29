@@ -1,0 +1,213 @@
+# Ansible Role
+# Build Configuration
+---
+sudo: required
+
+language: 'python'
+python: '2.7'
+
+services:
+  - docker
+
+notifications:
+  # Slack: Send information about any build, including the outcome.
+  #slack:
+  #  rooms:
+  #    -
+  #  on_start: 'always'
+  #  on_success: 'always'
+  #  on_failure: 'always'
+
+  # Ansible Galaxy: Notify upon successful build only.
+  #webhooks:
+  #  urls:
+  #    - 'https://galaxy.ansible.com/api/v1/notifications/'
+  #  on_start: 'never'
+  #  on_success: 'always'
+  #  on_failure: 'never'
+
+#
+# Build Matrix
+# Performs several categories of testing within a Build Matrix [1] on Travis CI.
+#
+# The containers are built on the fly, using a Dockerfile within a set of
+# externalised [2] Git repositories (ease of updating any container settings).
+# The adopted philosophy with these Dockerfiles is to be a minimal veneer
+# atop the 'Official' upstream container from Docker Hub [3],
+# loading Ansible using the recommended install technique [4].
+#
+# References:
+#  [1] https://docs.travis-ci.com/user/customizing-the-build/#Build-Matrix
+#  [2] https://github.com/agh/ansible-test-containers
+#  [3] https://hub.docker.com
+#  [4] https://docs.ansible.com/ansible/intro_installation.html
+#
+matrix:
+  allow_failures:
+    # Linting (Ansible)
+    - env: "distribution=centos version=7 init=/usr/lib/systemd/systemd docker_opts=--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro test_category=quality test_subcategory=lint_ansible allow_failure=true"
+    # Linting (YAML)
+    - env: "distribution=centos version=7 init=/usr/lib/systemd/systemd docker_opts=--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro test_category=quality test_subcategory=lint_yaml allow_failure=true"
+    # Debian Linux
+    - env: "distribution=debian version=wheezy init=/sbin/init test_category=compatibility allow_failure=true"
+    - env: "distribution=debian version=jessie init=/usr/lib/systemd/systemd docker_opts=--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro test_category=compatibility allow_failure=true"
+    # Oracle Linux
+    - env: "distribution=oraclelinux version=6 init=/sbin/init test_category=compatibility allow_failure=true"
+    - env: "distribution=oraclelinux version=7 init=/usr/lib/systemd/systemd docker_opts=--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro test_category=compatibility allow_failure=true"
+  fast_finish: 'true'
+
+env:
+  #
+  # Code Quality
+  #
+  # Attempts to test the Ansible Role against some quality gates.
+  # Uses the same operating system and setup (container) for all gates,
+  # but sticks to "one test, one container".
+  #
+  # Right now these are the tests executed in this category:
+  #
+  #   Test 1: Linting (Ansible, via ansible-lint [1])
+  #   Test 2: Linting (YAML, via ...................)
+  #
+  # References:
+  #  [1] https://github.com/willthames/ansible-lint
+  #
+  - distribution: 'centos'
+    version: '7'
+    init: '/usr/lib/systemd/systemd'
+    docker_opts: '--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    test_category: 'quality'
+    test_subcategory: 'lint_ansible'
+    allow_failure: 'true'
+  - distribution: 'centos'
+    version: '7'
+    init: '/usr/lib/systemd/systemd'
+    docker_opts: '--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    test_category: 'quality'
+    test_subcategory: 'lint_yaml'
+    allow_failure: 'true'
+
+  #
+  # OS Compatibility
+  #
+  # Attempts to test the Ansible Role against all supported operating systems.
+  # Runs through four distinct stages to ensure the role works as one might expect.
+  # Failure in an early stage will result in the later stages not being executed.
+  #
+  #   Stage 1: Prints the version of Ansible being used to test.
+  #   Stage 2: Runs a syntax check.
+  #   Stage 3: Attempts to converge the node to desired state using the role.
+  #   Stage 4: Performs another convergence, looks for idempotency issues.
+  #
+  # As of this point in time the list of containers is as follows:
+  #
+  #   [1] https://github.com/agh/ansible-testing-centos-6
+  #   [2] https://github.com/agh/ansible-testing-centos-7
+  #   [3] https://github.com/agh/ansible-testing-fedora-23
+  #   [4] https://github.com/agh/ansible-testing-oraclelinux-6
+  #   [5] https://github.com/agh/ansible-testing-oraclelinux-7
+  #   [6] https://github.com/agh/ansible-testing-ubuntu-12.04
+  #   [7] https://github.com/agh/ansible-testing-ubuntu-14.04
+  #
+  - distribution: 'centos'
+    version: '6'
+    init: '/sbin/init'
+    test_category: 'compatibility'
+  - distribution: 'centos'
+    version: '7'
+    init: '/usr/lib/systemd/systemd'
+    docker_opts: '--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    test_category: 'compatibility'
+  - distribution: 'debian'
+    version: 'wheezy'
+    init: '/sbin/init'
+    test_category: 'compatibility'
+    allow_failure: 'true'
+  - distribution: 'debian'
+    version: 'jessie'
+    init: '/usr/lib/systemd/systemd'
+    docker_opts: '--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    test_category: 'compatibility'
+    allow_failure: 'true'
+  - distribution: 'fedora'
+    version: '23'
+    init: '/usr/lib/systemd/systemd'
+    docker_opts: '--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    test_category: 'compatibility'
+  - distribution: 'oraclelinux'
+    version: '6'
+    init: '/sbin/init'
+    test_category: 'compatibility'
+    allow_failure: 'true'
+  - distribution: 'oraclelinux'
+    version: '7'
+    init: '/usr/lib/systemd/systemd'
+    docker_opts: '--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    test_category: 'compatibility'
+    allow_failure: 'true'
+  - distribution: 'ubuntu'
+    version: '12.04'
+    init: '/sbin/init'
+    test_category: 'compatibility'
+  - distribution: 'ubuntu'
+    version: '14.04'
+    init: '/sbin/init'
+    test_category: 'compatibility'
+
+# 'Pre Flight' Operations
+# These operations are all related to building a container, to a specification.
+install:
+  - 'sudo git clone https://github.com/agh/ansible-testing-${distribution}-${version} ${HOME}/container'
+  - 'sudo docker pull ${distribution}:${version}'
+  - 'sudo docker build --rm=true --file=${HOME}/container/Dockerfile --tag=${distribution}-${version}:ansible ${HOME}/container'
+
+# Game Time
+# Responsibility for PASS or FAIL results in Travis is mostly wired up from this point.
+script:
+  # Bring up the container we just readied in the 'install' stage.
+  - container_id=$(mktemp)
+  - 'sudo docker run --detach --volume="${PWD}":/etc/ansible/roles/test_role:ro --privileged ${docker_opts} ${distribution}-${version}:ansible "${init}" > "${container_id}"'
+
+  # Quality Testing
+  # See the remarks around the 'env' build matrix definition for more detail.
+  - >
+    if [ "${test_category}" == "quality" ]; then
+      echo 'Test Status: Now performing quality checks on this role...'
+      case "${test_subcategory}" in
+        "lint_ansible")
+          echo "linting ansible" && exit 1 # not implemented yet
+          ;;
+        "lint_yaml")
+          echo "linting YAML" && exit 1 # not implemented yet
+          ;;
+        *) # This should be impossible. Danger, Will Robinson!
+          exit 1
+        ;;
+      esac
+    else
+      return 0 # Not in a quality testing part of the build matrix.
+    fi
+
+  # Compatibility Testing
+  # See the remarks around the 'env' build matrix definition for more detail.
+  - >
+    if [ "${test_category}" == "compatibility" ]; then
+      echo 'Test Status: Now performing compatibility checks on this role...'
+
+      # Print Version Info
+      sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible --version || exit 1
+
+      # Syntax Validity
+      sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/test_role/tests/test.yml --syntax-check || exit 1
+
+      # Convergence
+      sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/test_role/tests/test.yml || exit 1
+
+      # Idempotency Check
+      sudo docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/test_role/tests/test.yml | grep 'changed=0.*failed=0' || exit 1
+    else
+      return 0 # Not in a compatibility testing part of the build matrix.
+    fi
+
+  # Tidy Up
+  - 'sudo docker stop "$(cat ${container_id})"'

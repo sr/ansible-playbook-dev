@@ -1,0 +1,7 @@
+---
+ntp_packages:
+  - python-selinux
+  - ntp
+
+ntp_service_name: ntp
+ntp_driftfile: /var/lib/ntp/ntp.drift

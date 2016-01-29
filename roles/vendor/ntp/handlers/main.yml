@@ -1,0 +1,8 @@
+---
+#
+# Author: Alex Howells <alex@howells.me>
+# Copyright (c) 2015, Aeode Ltd <hello@aeode.com>
+# Licensed under the terms stated in the LICENSE file, located in the repository root.
+#
+- name: restart ntp
+  service: name={{ ntp_service_name }} state=restarted

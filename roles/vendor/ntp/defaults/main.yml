@@ -1,0 +1,39 @@
+---
+ntp_config_file: '/etc/ntp.conf'
+ntp_package_state: 'installed'
+ntp_service_state: 'started'
+ntp_service_enabled: 'yes'
+
+ntp_driftfile: '/var/lib/ntp/drift'
+
+ntp_server: [ '0.pool.ntp.org', '1.pool.ntp.org', '2.pool.ntp.org', '3.pool.ntp.org' ]
+
+ntp_restrict:
+  - 'restrict -4 default kod notrap nomodify nopeer noquery'
+  - 'restrict -6 default kod notrap nomodify nopeer noquery'
+  - 'restrict -4 127.0.0.1'
+  - 'restrict -6 ::1'
+
+ntp_listen: []
+
+ntp_statistics: 'loopstats peerstats clockstats'
+ntp_filegen:
+- 'loopstats file loopstats type day enable'
+- 'peerstats file peerstats type day enable'
+- 'clockstats file clockstats type day enable'
+
+ntp_crypto: ''
+ntp_includefile: ''
+ntp_keys: ''
+ntp_trustedkey: ''
+ntp_requestkey: ''
+ntp_controlkey: ''
+
+ntp_broadcast: ''
+ntp_broadcastclient: ''
+ntp_multicastclient: ''
+
+# Support more tolerant behaviour with drastic time alterations, usually in a virtual world.
+# http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1006427
+# http://stackoverflow.com/a/14634941
+ntp_tinker_panic: true

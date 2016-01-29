@@ -8,3 +8,6 @@
 - src: "git+https://github.com/sr/ansible-role-cbk"
   name: cbk
   version: 7ad2139
+- src: "git+https://github.com/agh/ansible-role-ntp"
+  name: ntp
+  version: "d6e3f18"

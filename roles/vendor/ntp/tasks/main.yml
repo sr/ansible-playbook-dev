@@ -1,0 +1,27 @@
+---
+#
+# Author: Alex Howells <alex@howells.me>
+# Copyright (c) 2015, Aeode Ltd <hello@aeode.com>
+# Licensed under the terms stated in the LICENSE file, located in the repository root.
+#
+- name: Set variables which are specific to operating system
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Ensure that required packages are installed (EL)
+  yum: name={{ item }} state={{ ntp_package_state }}
+  with_items: ntp_packages
+  when: ansible_os_family == 'RedHat'
+
+- name: Ensure that required packages are installed (Debian)
+  apt: name={{ item }} state={{ ntp_package_state }}
+  with_items: ntp_packages
+  environment: "{{ env }}"
+  when: ansible_os_family == 'Debian'
+
+- name: Install the configuration file into /etc/ntp.conf
+  template: src=ntp.conf.j2 dest={{ ntp_config_file }}
+  notify:
+   - restart ntp
+
+- name: Manage the state of the NTP service
+  service: name={{ ntp_service_name }} state={{ ntp_service_state }} enabled={{ ntp_service_enabled }} pattern="/ntpd"

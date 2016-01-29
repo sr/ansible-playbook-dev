@@ -1,0 +1,34 @@
+---
+galaxy_info:
+  author: 'Alex Howells <alex@howells.me>'
+  company: 'Aeode Ltd <hello@aeode.com>'
+  license: BSD
+  min_ansible_version: 1.9
+  platforms:
+   - name: 'Debian'
+     versions:
+       - 'wheezy'
+       - 'jessie'
+   - name: 'EL'
+     versions:
+       - '6'
+       - '7'
+   - name: 'Fedora'
+     versions:
+       - 'all'
+   - name: 'FreeBSD'
+     versions:
+       - '10'
+   - name: 'SmartOS'
+     versions:
+       - 'all'
+   - name: 'Ubuntu'
+     versions:
+       - 'precise'
+       - 'trusty'
+  galaxy_tags:
+    - 'system'
+    - 'system:time'
+  github_branch: 'master'
+
+dependencies: []
