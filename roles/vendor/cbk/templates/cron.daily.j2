@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-set -eu
-exec 1> >(logger -s -t cbk -p cron.info) 2>&1
-sudo -u {{cbk_user}} bash - <<-EOS
-export PATH="/usr/local/bin:/bin:/usr/bin"
-export HOME="/home/{{cbk_user}}"
-cbk-pull -a
-EOS

@@ -1,29 +1,26 @@
 ---
 - apt_key: url=https://packagecloud.io/gpg.key state=present
 - apt: name=apt-transport-https state=present
-- apt_repository: repo="deb https://packagecloud.io/sr/cbk/ubuntu/ wily main" state=present
-- apt_repository: repo="deb-src https://packagecloud.io/sr/cbk/ubuntu/ wily main" state=present
-- apt_repository: repo="ppa:nilarimogard/webupd8" state=present
-- apt: name=cbk={{cbk_version}} update_cache=yes
-
-- group: name="{{cbk_group}}" system=yes state=present
-- user:
-    name="{{cbk_user}}"
-    group="{{cbk_group}}"
-    createhome=yes
-    password=no
-    shell=/bin/bash
-    state=present
-
+- apt_repository: repo="{{item}}" state=present
+  with_items:
+    - "deb https://packagecloud.io/sr/cbk/ubuntu/ wily main"
+    - "deb-src https://packagecloud.io/sr/cbk/ubuntu/ wily main"
+    - "ppa:nilarimogard/webupd8"
+- apt: name=cbk={{cbk_version}} update_cache=yes cache_valid_time=3600
 - template:
-    dest="/etc/cbk.conf"
+    dest="/home/{{cbk_user}}/etc/cbk.conf"
     src=cbk.conf.j2
-    owner=root
-    group=root
-
-- template:
-    dest="/etc/cron.daily/cbk"
-    src=cron.daily.j2
-    owner=root
-    group=root
-    mode=0750
+    owner="{{cbk_user}}"
+    group="{{cbk_user}}"
+    mode=0640
+- cronvar:
+    state=present
+    name="CBK_CONFIG"
+    value="/home/{{cbk_user}}/etc/cbk.conf"
+    user="{{cbk_user}}"
+- cron:
+    state=present
+    name="cbk"
+    special_time="daily"
+    user="{{cbk_user}}"
+    job="cbk-pull -a 2>&1 | logger -t cbk -p cron.info"

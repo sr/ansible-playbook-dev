@@ -12,6 +12,8 @@ go_tarball: "go1.6.linux-amd64.tar.gz"
 go_tarball_checksum: "5470eac05d273c74ff8bac7bef5bad0b5abbd1c4052efbdbc8db45332e836b0b"
 go_version_target: "go version go1.6 linux/amd64"
 
+cbk_user: "{{username}}"
+cbk_group: "{{username}}"
 cbk_fastmail_username: srozet@fastmail.fm
 cbk_fastmail_password: "{{vault_cbk_fastmail_password}}"
 cbk_github_user: sr
@@ -32,11 +34,4 @@ docker_authorized_users:
   - buildkite-agent
 
 acts_verbosity: 1
-acts_directories: >
-  home/sr
-  home/cbk/data/fastmail-carddav
-  home/cbk/data/fastmail-imap
-  home/cbk/data/github
-  home/cbk/data/irclogs
-  home/cbk/data/pinboard
-  home/cbk/data/soundcloud-likes
+acts_directories: home/sr

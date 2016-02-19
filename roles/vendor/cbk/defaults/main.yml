@@ -1,4 +1,4 @@
 cbk_user: cbk
 cbk_group: cbk
-cbk_data_dir: "/home/cbk/data"
+cbk_data_dir: "/home/{{cbk_user}}/data"
 cbk_version: 1.0.0
