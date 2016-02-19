@@ -25,6 +25,8 @@ buildkite_agent_token: "{{vault_buildkite_agent_token}}"
 
 vdirsyncer_dir: /opt/vdirsyncer
 
+rss2email_user: sr
+
 docker_authorized_users:
   - sr
   - buildkite-agent

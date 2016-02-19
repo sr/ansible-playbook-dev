@@ -19,3 +19,4 @@
     - { role: deb-build, tags: ['deb-build'] }
     - { role: dev-guest, tags: ['dev-guest'] }
     - { role: sr.buildkite-agent, tags: ['buildkite-agent'] }
+    - { role: rss2email, tags: ['rss2email'] }
