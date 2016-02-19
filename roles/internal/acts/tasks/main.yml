@@ -7,10 +7,10 @@
     src=acts.conf.j2
     owner=root
     group=root
-    mode=644
+    mode=0640
 - copy:
     dest="/etc/cron.{{acts_cron_frequency}}/acts"
     content="#!/bin/sh\nacts\n"
     owner=root
     group=root
-    mode=755
+    mode=0640
