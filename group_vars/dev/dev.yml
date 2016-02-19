@@ -1,17 +1,11 @@
 ---
+acts_verbosity: 1
+acts_directories: home/sr
 ansible_user: sr
 ansible_become: True
 ansible_become_user: root
 ansible_install_version: "2.0.0.2-1ppa~wily"
-
-irssi_logs_dir: "/home/sr/logs"
-
-papertrail_host: "{{vault_papertrail_host}}"
-
-go_tarball: "go1.6.linux-amd64.tar.gz"
-go_tarball_checksum: "5470eac05d273c74ff8bac7bef5bad0b5abbd1c4052efbdbc8db45332e836b0b"
-go_version_target: "go version go1.6 linux/amd64"
-
+buildkite_agent_token: "{{vault_buildkite_agent_token}}"
 cbk_user: "{{username}}"
 cbk_group: "{{username}}"
 cbk_fastmail_username: srozet@fastmail.fm
@@ -22,16 +16,13 @@ cbk_github_excludes: "sr/roko sr/rack-test sr/jekyll-pages benburkert vangberg/d
 cbk_irclogs_source: "{{irssi_logs_dir}}"
 cbk_pinboard_token: "{{vault_cbk_pinboard_token}}"
 cbk_soundcloud_likes_user: "srozet"
-
-buildkite_agent_token: "{{vault_buildkite_agent_token}}"
-
-vdirsyncer_dir: /opt/vdirsyncer
-
-rss2email_user: sr
-
 docker_authorized_users:
   - sr
   - buildkite-agent
-
-acts_verbosity: 1
-acts_directories: home/sr
+go_tarball: "go1.6.linux-amd64.tar.gz"
+go_tarball_checksum: "5470eac05d273c74ff8bac7bef5bad0b5abbd1c4052efbdbc8db45332e836b0b"
+go_version_target: "go version go1.6 linux/amd64"
+irssi_logs_dir: "/home/sr/logs"
+papertrail_host: "{{vault_papertrail_host}}"
+rss2email_user: sr
+vdirsyncer_dir: /opt/vdirsyncer
