@@ -1,0 +1,36 @@
+- apt: name={{item}} state=present
+  with_items:
+    - dma
+    - rss2email
+- user:
+    name="{{rss2email_user}}"
+    groups="{{rss2email_dma_group}}"
+    append=yes
+- template:
+    src=dma.conf.j2
+    dest=/etc/dma/dma.conf
+    owner=root
+    group="{{rss2email_dma_group}}"
+    mode=0640
+- template:
+    src=dma-auth.conf.j2
+    dest=/etc/dma/auth.conf
+    owner=root
+    group="{{rss2email_dma_group}}"
+    mode=0640
+- cronvar:
+    state=present
+    name="XDG_CONFIG_HOME"
+    value="{{rss2email_config_dir}}"
+    user="{{rss2email_user}}"
+- cronvar:
+    state=present
+    name="XDG_DATA_HOME"
+    value="{{rss2email_data_dir}}"
+    user="{{rss2email_user}}"
+- cron:
+    state=present
+    name="rss2email"
+    special_time=hourly
+    user="{{rss2email_user}}"
+    job="r2e run 2>&1 | logger -t rss2email -p cron.info"

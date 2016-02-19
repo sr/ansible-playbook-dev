@@ -1,0 +1,7 @@
+rss2email_dma_smarthost: smtp.sendgrid.net
+rss2email_dma_port: 2525
+rss2email_dma_user: "{{vault_rss2email_dma_user}}"
+rss2email_dma_password: "{{vault_rss2email_dma_password}}"
+rss2email_dma_group: "mail"
+rss2email_config_dir: "/home/{{username}}/etc"
+rss2email_data_dir: "/home/{{username}}/.local/share"
