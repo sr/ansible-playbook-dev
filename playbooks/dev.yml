@@ -14,7 +14,9 @@
     - { role: cbk, tags: ['cbk'] }
     - { role: tarsnap, tags: ['tarsnap'] }
     - { role: acts, tags: ['acts'] }
+    - { role: docker, tags: ['docker'] }
     - { role: docker-gc, docker_gc_frequency: "weekly" }
+    - { role: tarsnap, tags: ['tarsnap'] }
     - { role: dev-extra, tags: ['dev-extra'] }
     - { role: deb-build, tags: ['deb-build'] }
     - { role: dev-guest, tags: ['dev-guest'] }
