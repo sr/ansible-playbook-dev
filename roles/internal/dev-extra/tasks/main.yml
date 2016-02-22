@@ -21,3 +21,14 @@
     - tree
     - vim
     - vim-nox
+- cronvar:
+    state=present
+    name="PATH"
+    value="~/gobin:~/bin:/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin"
+    user="{{username}}"
+- cron:
+    state=present
+    name="rmdl-sync"
+    minute="*/5"
+    user="{{username}}"
+    job="/home/{{username}}/bin/rmdl-sync 2>&1 | logger -t rmdl-sync -p cron.info"
