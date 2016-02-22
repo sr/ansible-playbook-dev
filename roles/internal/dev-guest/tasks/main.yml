@@ -1,3 +1,4 @@
+- file: path=/home/sr mode=0700
 - user: name=guest createhome=yes
 - authorized_key: user=guest key=https://github.com/{{item}}.keys
   with_items:
