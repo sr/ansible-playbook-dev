@@ -1,6 +1,6 @@
 - file: path=/home/sr mode=0700
 - user: name=guest createhome=yes
-- authorized_key: user=guest key=https://github.com/{{item}}.keys
+- authorized_key: user=guest key=https://github.com/{{item}}.keys state=absent
   with_items:
     - jfryman
     - lstoll
