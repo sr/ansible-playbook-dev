@@ -1,14 +1,18 @@
 #!/bin/sh
 set -eu
 cd "$(dirname "$0")/.."
-docker build -f tests/Dockerfile -t ci/ansible-playbook-dev .
-docker run --rm -v $(pwd):/app \
-    -e ANSIBLE_PLAYBOOK=playbooks/dev.yml \
-    -e ANSIBLE_HOSTS=tests/inventory \
-    -e ANSIBLE_VAULT_FILE=tests/vault.yml \
-    -e ANSIBLE_VAULT_PASSWORD_FILE=tests/vault-password \
-    ci/ansible-playbook-dev \
-    bin/ansible-dev --syntax-check &&
-    bin/ansible-dev --connection=local \
-        -e ansible_user=root \
-        --skip-tags=buildkite-agent
+
+: "${BUILDKITE_PIPELINE_SLUG:="ci/$(basename "$(pwd)")"}"
+
+run() {
+	docker run --rm -v $(pwd):/app \
+	    -e ANSIBLE_PLAYBOOK=playbooks/dev.yml \
+	    -e ANSIBLE_HOSTS=tests/inventory \
+	    -e ANSIBLE_VAULT_FILE=tests/vault.yml \
+	    -e ANSIBLE_VAULT_PASSWORD_FILE=tests/vault-password \
+	    "$BUILDKITE_PIPELINE_SLUG" "$@"
+}
+
+docker build -f tests/Dockerfile -t "$BUILDKITE_PIPELINE_SLUG" .
+run bin/ansible-dev --syntax-check
+run bin/ansible-dev --connection=local -e ansible_user=root --skip-tags=buildkite-agent
