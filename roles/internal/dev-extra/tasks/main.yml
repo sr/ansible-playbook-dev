@@ -29,6 +29,6 @@
 - cron:
     state=present
     name="rmdl-sync"
-    minute="*/5"
+    minute="*/20"
     user="{{username}}"
     job="/home/{{username}}/bin/rmdl-sync 2>&1 | logger -t rmdl-sync -p cron.info"
