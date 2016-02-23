@@ -28,7 +28,7 @@
     user="{{username}}"
 - cron:
     state=present
-    name="rmdl-sync"
+    name="maildirpaper-sync"
     minute="*/20"
     user="{{username}}"
-    job="/home/{{username}}/bin/rmdl-sync 2>&1 | logger -t rmdl-sync -p cron.info"
+    job="/home/{{username}}/bin/maildirpaper-sync 2>&1 | logger -t maildirpaper -p cron.info"
