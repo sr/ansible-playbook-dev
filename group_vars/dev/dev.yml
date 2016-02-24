@@ -13,7 +13,6 @@ cbk_fastmail_password: "{{vault_cbk_fastmail_password}}"
 cbk_github_user: sr
 cbk_github_token: "{{vault_cbk_github_token}}"
 cbk_github_excludes: "sr/roko sr/rack-test sr/jekyll-pages benburkert vangberg/devspool"
-cbk_irclogs_source: "{{irssi_logs_dir}}"
 cbk_pinboard_token: "{{vault_cbk_pinboard_token}}"
 cbk_soundcloud_likes_user: "srozet"
 docker_authorized_users:
